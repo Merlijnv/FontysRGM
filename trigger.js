@@ -6,7 +6,7 @@ if (process.argv.length < 3) {
   process.exit(1);
 }
 
-let nextScreen = null;
+let nextScreen = 2;
 try {
   nextScreen = parseInt(process.argv[2]);
 } catch (e) {
@@ -14,8 +14,19 @@ try {
   process.exit(1);
 }
 
+var firebaseConfig = {
+  apiKey: "AIzaSyAEI97rRLY5mdtPHnH8x-9fGteQqPcnWb0",
+  authDomain: "kettingreactie-e0e69.firebaseapp.com",
+  databaseURL: "https://kettingreactie-e0e69.firebaseio.com",
+  projectId: "kettingreactie-e0e69",
+  storageBucket: "kettingreactie-e0e69.appspot.com",
+  messagingSenderId: "163401991644",
+  appId: "1:163401991644:web:b49ce9fe93a465e57ffb19",
+  measurementId: "G-ZPQTNJN070"
+};
+
 const firebase = require("firebase");
-const app = firebase.initializeApp(JSON.parse(process.env.FIREBASE_CONFIG));
+const app = firebase.initializeApp(firebaseConfig);
 
 app.database().ref("/chain/").set({
   node: {
@@ -26,3 +37,7 @@ app.database().ref("/chain/").set({
 setTimeout(() => {
   process.exit(0);
 }, 500);
+
+
+
+
